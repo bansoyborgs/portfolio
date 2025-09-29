@@ -1,3 +1,6 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -6,24 +9,34 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 
 function App() {
+  const [locationKey, setLocationKey] = useState(0);
+
+  // listen to hash changes (like #about, #skills)
+  useEffect(() => {
+    const handleHashChange = () => setLocationKey((prev) => prev + 1);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
   return (
     <div className="bg-black text-white">
-      {/* Navigation Bar */}
       <Navbar />
 
-      {/* Sections */}
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-gray-500 text-sm border-t border-gray-800">
-        © {new Date().getFullYear()} Jessie Jules Bantayan. All Rights Reserved.
-      </footer>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={locationKey}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
