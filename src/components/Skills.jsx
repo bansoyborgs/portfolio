@@ -1,3 +1,4 @@
+// src/components/Skills.jsx
 import { motion } from "framer-motion";
 
 export default function Skills() {
@@ -17,14 +18,14 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-gradient-to-b from-gray-900 to-black"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-gradient-to-b from-black to-gray-900"
     >
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold mb-12 text-teal-500"
+        className="text-5xl font-extrabold mb-12 text-teal-500 tracking-wide"
       >
         Skills
       </motion.h2>
@@ -42,7 +43,7 @@ export default function Skills() {
                 whileInView={{ width: `${skill.level}%` }}
                 transition={{ duration: 1.2, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="h-4 bg-teal-500 rounded-full"
+                className="h-4 bg-gradient-to-r from-teal-500 to-teal-700 rounded-full"
               />
             </div>
           </div>
