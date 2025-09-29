@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -33,18 +32,21 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-70 backdrop-blur-md z-50 shadow-md">
-      <ul className="flex justify-center space-x-8 py-4 text-white font-medium text-lg">
+      <ul className="flex justify-center space-x-8 py-4 text-white font-medium">
         {links.map((link) => (
           <li key={link.id}>
             <a
               href={`#${link.id}`}
-              className={`transition-colors duration-200 ${
+              className={`relative transition-colors ${
                 activeSection === link.id
-                  ? "text-teal-400 font-semibold"
-                  : "hover:text-teal-300"
+                  ? "text-teal-500 font-semibold"
+                  : "hover:text-teal-400"
               }`}
             >
               {link.label}
+              {activeSection === link.id && (
+                <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-teal-500 rounded-full"></span>
+              )}
             </a>
           </li>
         ))}
