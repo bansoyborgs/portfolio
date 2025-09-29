@@ -11,7 +11,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold mb-8 text-pink-500"
+        className="text-4xl font-bold mb-8 text-teal-500"
       >
         Contact Me
       </motion.h2>
@@ -30,7 +30,7 @@ export default function Contact() {
       <div className="flex space-x-6">
         <a
           href="mailto:jjjbantayan@gmail.com"
-          className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full font-medium shadow-lg"
+          className="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white rounded-full font-medium shadow-lg"
         >
           Email Me
         </a>
