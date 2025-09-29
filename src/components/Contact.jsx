@@ -43,7 +43,7 @@ export default function Contact() {
           GitHub
         </a>
         <a
-          href="linkedin.com/in/jessie-jules-bantayan-682750387"
+          href="www.linkedin.com/in/jessie-jules-bantayan-682750387"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg"
