@@ -24,7 +24,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold mb-12 text-pink-500"
+        className="text-4xl font-bold mb-12 text-teal-500"
       >
         Skills
       </motion.h2>
@@ -42,7 +42,7 @@ export default function Skills() {
                 whileInView={{ width: `${skill.level}%` }}
                 transition={{ duration: 1.2, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="h-4 bg-pink-500 rounded-full"
+                className="h-4 bg-teal-500 rounded-full"
               />
             </div>
           </div>
