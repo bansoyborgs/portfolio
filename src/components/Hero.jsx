@@ -12,7 +12,7 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="text-5xl md:text-7xl font-extrabold text-center"
       >
-        Hi, I’m <span className="text-pink-500">Jessie Jules Bantayan</span>
+        Hi, I’m <span className="text-teal-500">Jessie Jules Bantayan</span>
       </motion.h1>
 
       <motion.p
@@ -27,7 +27,7 @@ export default function Hero() {
       <motion.a
         href="#projects"
         whileHover={{ scale: 1.1 }}
-        className="mt-8 px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-full shadow-lg"
+        className="mt-8 px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full shadow-lg"
       >
         View My Work
       </motion.a>
