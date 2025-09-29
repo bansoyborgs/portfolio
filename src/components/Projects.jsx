@@ -1,69 +1,48 @@
-// src/components/Projects.jsx
 import { motion } from "framer-motion";
+import { sectionVariant, itemVariant } from "../motionConfig";
 
 export default function Projects() {
   const projects = [
     {
       title: "Intelligent Vehicle Collision Detection System",
-      description:
-        "AI-powered surveillance system for real-time vehicle accident detection and automated alerts.",
-      link: "#",
+      description: "AI-powered surveillance system for real-time vehicle accident detection and automated alerts.",
     },
     {
       title: "Pizza Ordering System",
-      description:
-        "A Python-based system with customizable pizza types and unique topping options.",
-      link: "#",
+      description: "A Python-based system with customizable pizza types and unique topping options.",
     },
     {
       title: "IoT-based Smart Farming",
-      description:
-        "Capstone concept focused on agriculture automation using IoT sensors and data analytics.",
-      link: "#",
+      description: "Capstone concept focused on agriculture automation using IoT sensors and data analytics.",
     },
   ];
 
   return (
-    <section
+    <motion.section
       id="projects"
-      className="min-h-screen px-6 py-20 bg-gradient-to-b from-black to-gray-900"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-gradient-to-b from-black to-gray-900"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={sectionVariant}
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-5xl md:text-6xl font-extrabold text-center text-teal-500 mb-12 tracking-wider"
-      >
+      <motion.h2 variants={itemVariant} className="text-4xl font-bold mb-12 text-teal-500">
         Projects
       </motion.h2>
 
-      <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {projects.map((project, idx) => (
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl">
+        {projects.map((project, index) => (
           <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
+            key={index}
+            variants={itemVariant}
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700 hover:border-teal-400 transition-all"
+            className="p-6 bg-gray-800 rounded-2xl shadow-lg hover:shadow-teal-500/50 transition"
           >
-            <h3 className="text-2xl font-semibold mb-4 text-teal-300">
-              {project.title}
-            </h3>
-            <p className="text-gray-300 mb-6">{project.description}</p>
-            <a
-              href={project.link}
-              className="text-teal-400 hover:text-teal-500 font-medium transition"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View Project →
-            </a>
+            <h3 className="text-2xl font-semibold mb-3 text-white">{project.title}</h3>
+            <p className="text-gray-300">{project.description}</p>
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
