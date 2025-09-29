@@ -39,8 +39,8 @@ export default function Navbar() {
               href={`#${link.id}`}
               className={`transition-colors ${
                 activeSection === link.id
-                  ? "text-pink-500 font-semibold"
-                  : "hover:text-pink-400"
+                  ? "text-teal-500 font-semibold"
+                  : "hover:text-teal-400"
               }`}
             >
               {link.label}
