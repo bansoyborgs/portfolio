@@ -1,37 +1,35 @@
-// src/components/Contact.jsx
 import { motion } from "framer-motion";
+import { sectionVariant, itemVariant } from "../motionConfig";
 
 export default function Contact() {
   return (
-    <section
+    <motion.section
       id="contact"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-gradient-to-b from-gray-900 to-black"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-black"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={sectionVariant}
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-5xl font-extrabold mb-10 text-teal-500 tracking-wide"
-      >
+      <motion.h2 variants={itemVariant} className="text-4xl font-bold mb-8 text-teal-500">
         Contact Me
       </motion.h2>
 
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 1 }}
-        viewport={{ once: true }}
-        className="text-lg text-gray-300 mb-8 text-center max-w-xl"
+        variants={itemVariant}
+        className="text-lg text-gray-300 mb-6 text-center max-w-lg"
       >
         I’m always open to collaborations, new opportunities, or just a friendly
         chat. Let’s connect!
       </motion.p>
 
-      <div className="flex flex-wrap gap-6 justify-center">
+      <motion.div
+        variants={itemVariant}
+        className="flex space-x-6"
+      >
         <a
           href="mailto:jjjbantayan@gmail.com"
-          className="px-8 py-3 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full font-medium shadow-lg transition"
+          className="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white rounded-full font-medium shadow-lg"
         >
           Email Me
         </a>
@@ -39,7 +37,7 @@ export default function Contact() {
           href="https://github.com/bansoyborgs"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg transition"
+          className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg"
         >
           GitHub
         </a>
@@ -47,11 +45,11 @@ export default function Contact() {
           href="https://www.linkedin.com/in/jessie-jules-bantayan-682750387"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg transition"
+          className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg"
         >
           LinkedIn
         </a>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
