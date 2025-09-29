@@ -1,5 +1,5 @@
-// src/components/Skills.jsx
 import { motion } from "framer-motion";
+import { sectionVariant, itemVariant } from "../motionConfig";
 
 export default function Skills() {
   const skills = [
@@ -16,23 +16,21 @@ export default function Skills() {
   ];
 
   return (
-    <section
+    <motion.section
       id="skills"
-      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-gradient-to-b from-black to-gray-900"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-gradient-to-b from-gray-900 to-black"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={sectionVariant}
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-5xl font-extrabold mb-12 text-teal-500 tracking-wide"
-      >
+      <motion.h2 variants={itemVariant} className="text-4xl font-bold mb-12 text-teal-500">
         Skills
       </motion.h2>
 
       <div className="w-full max-w-3xl space-y-6">
         {skills.map((skill, index) => (
-          <div key={index}>
+          <motion.div key={index} variants={itemVariant}>
             <div className="flex justify-between mb-2">
               <span className="text-white font-medium">{skill.name}</span>
               <span className="text-gray-400">{skill.level}%</span>
@@ -43,12 +41,12 @@ export default function Skills() {
                 whileInView={{ width: `${skill.level}%` }}
                 transition={{ duration: 1.2, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="h-4 bg-gradient-to-r from-teal-500 to-teal-700 rounded-full"
+                className="h-4 bg-teal-500 rounded-full"
               />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
