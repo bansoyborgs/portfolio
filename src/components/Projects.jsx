@@ -29,7 +29,7 @@ export default function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold mb-12 text-pink-500"
+        className="text-4xl font-bold mb-12 text-teal-500"
       >
         Projects
       </motion.h2>
@@ -39,7 +39,7 @@ export default function Projects() {
           <motion.div
             key={index}
             whileHover={{ scale: 1.05 }}
-            className="p-6 bg-gray-800 rounded-2xl shadow-lg hover:shadow-pink-500/50 transition"
+            className="p-6 bg-gray-800 rounded-2xl shadow-lg hover:shadow-teal-500/50 transition"
           >
             <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
             <p className="text-gray-300">{project.description}</p>
