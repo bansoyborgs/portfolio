@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV DataTables Assignment</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/select/1.7.0/css/select.bootstrap5.min.css" rel="stylesheet">
+
+    <style>
+        body { padding: 30px; background-color: #f8f9fa; }
+        
+        /* LAYOUT REQUIREMENT: Page navigation in top middle */
+        .dataTables_wrapper .dataTables_paginate {
+            float: none;
+            text-align: center !important;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* LAYOUT REQUIREMENT: Entries per page lower left, Info below it */
+        .bottom-controls {
+            margin-top: 10px;
+        }
+        
+        /* Visual spacing for the inputs in the header */
+        thead input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container bg-white p-4 shadow rounded">
+    <h2 class="mb-4 text-center">DataTables Implementation</h2>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab">Employee View 1</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab">Employee View 2</button>
+        </li>
+    </ul>
+
+    <div class="tab-content p-3 border border-top-0" id="myTabContent">
+        
+        <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+            <button class="btn btn-danger mb-3 delete-btn">Delete Selected Row</button>
+            
+            <table id="table1" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nationality</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Start Date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="tab2" role="tabpanel">
+            <button class="btn btn-danger mb-3 delete-btn">Delete Selected Row</button>
+            <table id="table2" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nationality</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Start Date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    
+    function initTable(tableId) {
+        // Requirement: Individual column searching (Clone header for inputs)
+        $(tableId + ' thead tr').clone(true).addClass('filters').appendTo(tableId + ' thead');
+
+        var table = $(tableId).DataTable({
+            // Requirement: Datasource - AJAX
+            ajax: 'mockData.json',
+            
+            columns: [
+                { data: 'id' },
+                { data: 'nationality' },
+                { data: 'name' },
+                { data: 'position' },
+                { data: 'office' },
+                { data: 'start_date' },
+                { data: 'salary' }
+            ],
+            
+            // Requirement: Layout Customization
+            // 'p' (pagination) -> top middle
+            // 'B' (buttons/colvis) -> standard placement
+            // 't' (table)
+            // 'l' (length/entries) -> lower left
+            // 'i' (info/showing x of x) -> below entries
+            // Note: 'f' (filtering/search) is OMITTED to remove the global search field.
+            dom: 
+                '<"row"<"col-12 d-flex justify-content-center"p>>' + 
+                '<"row"<"col-12 mb-2"B>>' +
+                '<"row"<"col-12"t>>' + 
+                '<"bottom-controls"li>',
+
+            // Requirement: Can show/hide columns
+            buttons: [ 'colvis' ],
+            
+            // Requirement: Can select a row
+            select: true,
+            
+            orderCellsTop: true,
+            fixedHeader: true,
+            initComplete: function () {
+                var api = this.api();
+    
+                // Logic to generate input boxes for column searching
+                api.columns().eq(0).each(function (colIdx) {
+                    var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                    var title = $(cell).text();
+                    $(cell).html('<input type="text" placeholder="Search ' + title + '" />');
+    
+                    $('input', $('.filters th').eq($(api.column(colIdx).header()).index()))
+                        .off('keyup change')
+                        .on('change', function (e) {
+                            // Get the search value
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})'; 
+                            
+                            api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value != '',
+                                    this.value == ''
+                                )
+                                .draw();
+                        })
+                        .on('keyup', function (e) {
+                            e.stopPropagation();
+                            $(this).trigger('change');
+                        });
+                });
+            }
+        });
+
+        return table;
+    }
+
+    // Initialize both tables
+    var t1 = initTable('#table1');
+    var t2 = initTable('#table2');
+
+    // Requirement: Delete a row button logic
+    $('#tab1 .delete-btn').click(function() {
+        t1.row('.selected').remove().draw(false);
+    });
+
+    $('#tab2 .delete-btn').click(function() {
+        t2.row('.selected').remove().draw(false);
+    });
+});
+</script>
+
+</body>
+</html>
