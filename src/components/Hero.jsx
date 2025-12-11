@@ -24,14 +24,21 @@ export default function Hero() {
         A BS Information Technology Student & Aspiring IT Professional 🚀
       </motion.p>
 
-      <motion.a
-        variants={itemVariant}
-        href="#projects"
-        whileHover={{ scale: 1.08, y: -3 }}
-        className="mt-10 px-8 py-4 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full shadow-lg transition"
-      >
-        View My Work
-      </motion.a>
+      {/* INSTRUCTOR FEEDBACK: Hire me button that opens email */}
+      <motion.div variants={itemVariant} className="mt-10 flex gap-4">
+        <a
+          href="mailto:jjjbantayan@gmail.com"
+          className="px-8 py-4 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105"
+        >
+          Hire Me
+        </a>
+        <a
+          href="#projects"
+          className="px-8 py-4 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105"
+        >
+          View My Work
+        </a>
+      </motion.div>
     </motion.section>
   );
 }

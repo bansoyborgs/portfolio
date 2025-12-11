@@ -17,7 +17,7 @@ export default function Contact() {
 
       <motion.p
         variants={itemVariant}
-        className="text-lg text-gray-300 mb-6 text-center max-w-lg"
+        className="text-lg text-gray-300 mb-8 text-center max-w-lg"
       >
         I’m always open to collaborations, new opportunities, or just a friendly
         chat. Let’s connect!
@@ -25,11 +25,11 @@ export default function Contact() {
 
       <motion.div
         variants={itemVariant}
-        className="flex space-x-6"
+        className="flex gap-6 flex-wrap justify-center"
       >
         <a
           href="mailto:jjjbantayan@gmail.com"
-          className="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white rounded-full font-medium shadow-lg"
+          className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-full font-medium shadow-lg transition transform hover:scale-105"
         >
           Email Me
         </a>
@@ -37,7 +37,7 @@ export default function Contact() {
           href="https://github.com/bansoyborgs"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg"
+          className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg transition transform hover:scale-105"
         >
           GitHub
         </a>
@@ -45,7 +45,7 @@ export default function Contact() {
           href="https://www.linkedin.com/in/jessie-jules-bantayan-682750387"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-full font-medium shadow-lg"
+          className="px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white rounded-full font-medium shadow-lg transition transform hover:scale-105"
         >
           LinkedIn
         </a>
