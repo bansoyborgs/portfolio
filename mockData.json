@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "id": "1", "nationality": "American", "name": "Tiger Nixon", "position": "System Architect", "office": "Edinburgh", "start_date": "2011/04/25", "salary": "$320,800" },
+    { "id": "2", "nationality": "Japanese", "name": "Garrett Winters", "position": "Accountant", "office": "Tokyo", "start_date": "2011/07/25", "salary": "$170,750" },
+    { "id": "3", "nationality": "British", "name": "Ashton Cox", "position": "Technical Author", "office": "San Francisco", "start_date": "2009/01/12", "salary": "$86,000" },
+    { "id": "4", "nationality": "Scottish", "name": "Cedric Kelly", "position": "Javascript Dev", "office": "Edinburgh", "start_date": "2012/03/29", "salary": "$433,060" },
+    { "id": "5", "nationality": "Japanese", "name": "Airi Satou", "position": "Accountant", "office": "Tokyo", "start_date": "2008/11/28", "salary": "$162,700" },
+    { "id": "6", "nationality": "American", "name": "Brielle Williamson", "position": "Integration Specialist", "office": "New York", "start_date": "2012/12/02", "salary": "$372,000" },
+    { "id": "7", "nationality": "American", "name": "Herrod Chandler", "position": "Sales Assistant", "office": "San Francisco", "start_date": "2012/08/06", "salary": "$137,500" },
+    { "id": "8", "nationality": "British", "name": "Rhona Davidson", "position": "Integration Specialist", "office": "Tokyo", "start_date": "2010/10/14", "salary": "$327,900" },
+    { "id": "9", "nationality": "American", "name": "Colleen Hurst", "position": "Javascript Dev", "office": "San Francisco", "start_date": "2009/09/15", "salary": "$205,500" },
+    { "id": "10", "nationality": "British", "name": "Sonya Frost", "position": "Software Engineer", "office": "Edinburgh", "start_date": "2008/12/13", "salary": "$103,600" }
+  ]
+}
